@@ -240,10 +240,8 @@ int main()
                 Fibonacci();
                 break;
             case 10:
-            {
                 cout << "Reversed string: " << ReverseStr();
                 break;
-            }
             case 11:
                 PrimeList();
                 break;
