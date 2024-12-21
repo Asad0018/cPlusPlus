@@ -225,10 +225,7 @@ int main()
             cout << "Factorial: " << Factorial();
             break;
         case 6:
-            if (CheckPrime())
-                cout << "It's Prime";
-            else
-                cout << "Not Prime";
+            (CheckPrime()) ? cout << "It's Prime" : cout << "Not Prime";
             break;
         case 7:
             cout << "B.M.M : " << BMM();
