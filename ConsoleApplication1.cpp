@@ -179,6 +179,28 @@ string ReverseStr(string s = GetString())
     return r;
 }
 
+// Gets the name and scores and shows the names of the best and worst students:
+void Scores()
+{
+    cout << "How many students? ";
+    int n; cin >> n;
+    int iMin = 0, iMax = 0;
+    vector<double> scores(n);
+    vector<string> names(n);
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter a name: ";
+        cin >> names[i];
+        cout << "Enter his score: ";
+        cin >> scores[i];
+        if (scores[i] < scores[iMin])
+            iMin = i;
+        if (scores[i] > scores[iMax])
+            iMax = i;
+    }
+    cout << "The best student: " << names[iMax] << "\nThe worst: " << names[iMin];
+}
+
 int main()
 {
     cout << "I can do these things for you. Choose the number of your option:\n\n";
@@ -195,8 +217,9 @@ int main()
     cout << "11. Show a list of prime numbers until n\n";
     cout << "12. If the number is even, *2 . otherwise /2\n";
     cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
+    cout << "14. Gets the name and scores and shows the best and the worst students\n";
 
-    int option, options = 13;
+    int option, options = 14;
     while (true)
     {
         cout << "\nYour option: ";
@@ -248,8 +271,11 @@ int main()
         case 13:
             Plus();
             break;
+        case 14:
+            Scores();
+            break;
         default:
-            cout << "invalid input!! Choose a numer between 1 and " << options << "\n";
+            cout << "invalid input!! Choose a numer from 1 to " << options << "\n";
             break;
         }
         if (option <= options && option >= 1)
