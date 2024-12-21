@@ -174,6 +174,7 @@ void ReverseStr()
 {
     string s, r;
     cout << "Enter a string: ";
+    cin.ignore();
     getline(cin, s);
     for (int i = s.size() - 1; i >= 0; i--)
         r += s[i];
