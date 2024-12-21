@@ -196,7 +196,7 @@ int main()
     cout << "12. If the number is even, *2 . otherwise /2\n";
     cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
     cout << "\nYour option: ";
-    int option; 
+    int option, options =13;
     while (true)
     {
         cin >> option;
@@ -254,10 +254,10 @@ int main()
                 Plus();
                 break;
             default: 
-                cout << "invalid input!! Choose a numer between 1 and 12.\n";
+                cout << "invalid input!! Choose a numer between 1 and " << options <<"\n";
                 break;
         }
-        if (option <= 13 && option >= 1)
+        if (option <= options && option >= 1)
             break;
     }
     return 0;
