@@ -195,10 +195,11 @@ int main()
     cout << "11. Show a list of prime numbers until n\n";
     cout << "12. If the number is even, *2 . otherwise /2\n";
     cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
-    cout << "\nYour option: ";
+
     int option, options = 13;
     while (true)
     {
+        cout << "\nYour option: ";
         cin >> option;
 
         switch (option)
@@ -213,8 +214,8 @@ int main()
         {
             vector<double> sorted(Sort());
             cout << "Sorted numbers: ";
-            for (int i = 0; i < sorted.size(); i++)
-                cout << sorted[i] << ",";
+            for (int i : sorted)
+                cout << i << ",";
             break;
         }
         case 4:
