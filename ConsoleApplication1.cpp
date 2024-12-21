@@ -10,7 +10,7 @@ int GetInt()
 }
 
 // Inputs an array of doubles:
-vector<double> GetDoubles() 
+vector<double> GetDoubles()
 {
     double size;
     cout << "How many numbers do you wanna enter? ";
@@ -28,12 +28,12 @@ string GetString()
 {
     cout << "Enter a string: ";
     string s;
-    cin.ignore(); getline(cin, s); 
+    cin.ignore(); getline(cin, s);
     return s;
 }
 
 // Average:
-double Average( vector<double> nums = GetDoubles())
+double Average(vector<double> nums = GetDoubles())
 {
     double sum = 0;
     for (int i = 0; i < nums.size(); i++)
@@ -57,7 +57,7 @@ void PrimeList(int n = GetInt())
 }
 
 // Minimum number:
-double Min( vector<double> nums = GetDoubles()) 
+double Min(vector<double> nums = GetDoubles())
 {
     double min = INFINITY;
     for (int i = 0; i < nums.size(); i++)
@@ -148,7 +148,7 @@ void Plus(int n = GetInt())
 }
 
 // Sorts an array of doubles:
-vector<double> Sort(vector<double> nums)
+vector<double> Sort(vector<double> nums = GetDoubles())
 {
     double iMin = 0;
     vector<double> arranged(nums.size());
@@ -196,64 +196,63 @@ int main()
     cout << "12. If the number is even, *2 . otherwise /2\n";
     cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
     cout << "\nYour option: ";
-    int option, options =13;
+    int option, options = 13;
     while (true)
     {
         cin >> option;
-        
+
         switch (option)
         {
-            case 1:
-                cout << "The minimum number: " << Min();
-                break;
-            case 2:
-                cout << "The maximum number: " << Max();
-                break;
-            case 3:
-            {
-                vector<double> nums = GetDoubles();
-                vector<double> sorted(Sort(nums));
-                cout << "Sorted numbers: ";
-                for (int i = 0; i < sorted.size(); i++)
-                    cout << sorted[i] << ",";
-                break;
-            }
-            case 4:
-                cout << "Average: " << Average();
-                break;
-            case 5:
-                cout << "Factorial: " << Factorial();
-                break;
-            case 6:
-                if (CheckPrime())
-                    cout << "It's Prime";
-                else
-                    cout << "Not Prime";
-                break;
-            case 7:
-                cout << "B.M.M : " << BMM();
-                break;
-            case 8:
-                MultiplicationTable();
-                break;
-            case 9:
-                Fibonacci();
-                break;
-            case 10:
-                cout << "Reversed string: " << ReverseStr();
-                break;
-            case 11:
-                PrimeList();
-                break;
-            case 12:
-                cout << "Result: " << CheckEO();
-                break;
-            case 13:
-                Plus();
-                break;
-            default: 
-                cout << "invalid input!! Choose a numer between 1 and " << options <<"\n";
-                break;
+        case 1:
+            cout << "The minimum number: " << Min();
+            break;
+        case 2:
+            cout << "The maximum number: " << Max();
+            break;
+        case 3:
+        {
+            vector<double> sorted(Sort());
+            cout << "Sorted numbers: ";
+            for (int i = 0; i < sorted.size(); i++)
+                cout << sorted[i] << ",";
+            break;
+        }
+        case 4:
+            cout << "Average: " << Average();
+            break;
+        case 5:
+            cout << "Factorial: " << Factorial();
+            break;
+        case 6:
+            if (CheckPrime())
+                cout << "It's Prime";
+            else
+                cout << "Not Prime";
+            break;
+        case 7:
+            cout << "B.M.M : " << BMM();
+            break;
+        case 8:
+            MultiplicationTable();
+            break;
+        case 9:
+            Fibonacci();
+            break;
+        case 10:
+            cout << "Reversed string: " << ReverseStr();
+            break;
+        case 11:
+            PrimeList();
+            break;
+        case 12:
+            cout << "Result: " << CheckEO();
+            break;
+        case 13:
+            Plus();
+            break;
+        default:
+            cout << "invalid input!! Choose a numer between 1 and " << options << "\n";
+            break;
         }
         if (option <= options && option >= 1)
             break;
