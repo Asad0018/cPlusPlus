@@ -141,7 +141,6 @@ void Plus(int n = GetInt())
 {
     for (int j = 1; j <= n; j++)
     {
-        cout << "\n";
         for (int i = 1; i <= j; i++)
             cout << "+";
         cout << "\n";
@@ -195,6 +194,7 @@ int main()
     cout << "10. Reverse a string\n";
     cout << "11. Show a list of prime numbers until n\n";
     cout << "12. If the number is even, *2 . otherwise /2\n";
+    cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
     cout << "\nYour option: ";
     int option; 
     while (true)
@@ -250,11 +250,14 @@ int main()
             case 12:
                 cout << "Result: " << CheckEO();
                 break;
+            case 13:
+                Plus();
+                break;
             default: 
                 cout << "invalid input!! Choose a numer between 1 and 12.\n";
                 break;
         }
-        if (option <= 12 && option >= 1)
+        if (option <= 13 && option >= 1)
             break;
     }
     return 0;
