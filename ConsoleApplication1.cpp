@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -27,7 +27,9 @@ vector<double> GetDoubles()
 string GetString()
 {
     cout << "Enter a string: ";
-    string s; getline(cin, s); return s;
+    string s;
+    cin.ignore(); getline(cin, s); 
+    return s;
 }
 
 // Average:
@@ -170,15 +172,12 @@ double CheckEO(int n = GetInt())
 }
 
 // Reverse the string:
-void ReverseStr()
+string ReverseStr(string s = GetString())
 {
-    string s, r;
-    cout << "Enter a string: ";
-    cin.ignore();
-    getline(cin, s);
+    string r;
     for (int i = s.size() - 1; i >= 0; i--)
         r += s[i];
-    cout << r;
+    return r;
 }
 
 int main()
@@ -242,7 +241,7 @@ int main()
                 break;
             case 10:
             {
-                ReverseStr();
+                cout << "Reversed string: " << ReverseStr();
                 break;
             }
             case 11:
@@ -255,7 +254,8 @@ int main()
                 cout << "invalid input!! Choose a numer between 1 and 12.\n";
                 break;
         }
-        if (option < 13 && option > 0)
+        if (option <= 12 && option >= 1)
             break;
     }
+    return 0;
 }
