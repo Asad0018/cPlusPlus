@@ -79,14 +79,14 @@ double Max(vector<double> nums = GetDoubles())
 // Factorial:
 int Factorial(int n = GetInt())
 {
-    double f = 1;
+    int f = 1;
     for (n; n > 0; n--)
         f *= n;
     return f;
 }
 
 // Fibonacci:
-int Fibonacci()
+void Fibonacci()
 {
     cout << "enter a number\n";
     int f1 = 0, f2 = 1, n; cin >> n;
@@ -96,7 +96,6 @@ int Fibonacci()
         int f3 = f1 + f2; f1 = f2; f2 = f3;
         cout << "," << f3;
     }
-    return 0;
 }
 
 // Checks if the number is prime or not (true/false):
