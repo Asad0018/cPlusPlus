@@ -12,7 +12,7 @@ int GetInt()
 // Inputs an array of doubles:
 vector<double> GetDoubles()
 {
-    double size;
+    int size;
     cout << "How many numbers do you wanna enter? ";
     cin >> size;
     vector<double> arr(size);
@@ -59,21 +59,21 @@ void PrimeList(int n = GetInt())
 // Minimum number:
 double Min(vector<double> nums = GetDoubles())
 {
-    double min = INFINITY;
+    int iMin = 0;
     for (int i = 0; i < nums.size(); i++)
-        if (nums[i] < min)
-            min = nums[i];
-    return min;
+        if (nums[i] < nums[iMin])
+            iMin = i;
+    return nums[iMin];
 }
 
 // Maximum number:
 double Max(vector<double> nums = GetDoubles())
 {
-    double max = -INFINITY;
+    int iMax = 0;
     for (int i = 0; i < nums.size(); i++)
-        if (nums[i] > max)
-            max = nums[i];
-    return max;
+        if (nums[i] > nums[iMax])
+            iMax = i;
+    return nums[iMax];
 }
 
 // Factorial:
