@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 using namespace std;
+
 // Inputs an integer:
 int GetInt()
 {
