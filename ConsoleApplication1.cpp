@@ -178,7 +178,7 @@ string ReverseStr(string s = GetString())
     return r;
 }
 
-// Gets the name and scores and shows the names of the best and worst students:
+// Gets the names and scores then shows the best and worst students:
 void Scores()
 {
     cout << "How many students? ";
