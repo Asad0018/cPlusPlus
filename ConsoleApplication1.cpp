@@ -227,10 +227,11 @@ int main()
     cout << "14. Shows the best and the worst students\n";
 
     int option, options = 14;
-    while (true)
+    bool loop = true;
+    while (loop)
     {
-        cout << "\nYour option: ";
-        cin >> option;
+        loop = false;
+        cout << "\nYour option: "; cin >> option;
 
         switch (option)
         {
@@ -283,10 +284,9 @@ int main()
             break;
         default:
             cout << "invalid input!! Choose a numer from 1 to " << options << "\n";
+            loop = true;
             break;
         }
-        if (option <= options && option >= 1)
-            break;
     }
     return 0;
 }
