@@ -3,21 +3,29 @@
 #include <string>
 using namespace std;
 
-// Inputs an integer:
-int GetInt()
+// Gets the number of inputs from user:
+int HowMany()
 {
-    cout << "Enter an integer number: ";
-    int n; cin >> n; return n;
+    cout << "How many numbers do you wanna enter? ";
+    int size; cin >> size; return size;
+}
+
+// Inputs an array of integers:
+vector<int> GetInts(int size = HowMany())
+{
+    vector<int> ints(size);
+    (size == 1) ? cout << "Enter a number: " : cout << "Enter " << size << " numbers:\n";
+    for (int i = 0; i < size; ++i)
+        cin >> ints[i];
+    return ints;
 }
 
 // Inputs an array of doubles:
-vector<double> GetDoubles()
+vector<double> GetDoubles(int size = HowMany())
 {
-    cout << "How many numbers do you wanna enter? ";
-    int size; cin >> size;
     vector<double> arr(size);
 
-    cout << "Enter " << size << " numbers:\n";
+    (size == 1) ? cout << "Enter a number: " : cout << "Enter " << size << " numbers:\n";
     for (int i = 0; i < size; ++i)
         cin >> arr[i];
     return arr;
@@ -30,30 +38,6 @@ string GetString()
     string s;
     cin.ignore(); getline(cin, s);
     return s;
-}
-
-// Average:
-double Average(vector<double> nums = GetDoubles())
-{
-    double sum = 0;
-    for (int i = 0; i < nums.size(); i++)
-        sum = sum + nums[i];
-    return sum / nums.size();
-}
-
-// Outputs a list of prime numbers until n:
-void PrimeList(int n = GetInt())
-{
-    for (int i = 2; i <= n; i++)
-    {
-        int j = i;
-        do
-        {
-            if (j == 2)
-                cout << i << ",";
-            j--;
-        } while (i % j != 0 && j > 1);
-    }
 }
 
 // Minimum number:
@@ -76,76 +60,6 @@ double Max(vector<double> nums = GetDoubles())
     return nums[iMax];
 }
 
-// Factorial:
-int Factorial(int n = GetInt())
-{
-    int f = 1;
-    for (n; n > 0; n--)
-        f *= n;
-    return f;
-}
-
-// Fibonacci:
-void Fibonacci()
-{
-    cout << "enter a number\n";
-    int f1 = 0, f2 = 1, n; cin >> n;
-    cout << f1 << "," << f2;
-    for (int i = 2; i < n; i++)
-    {
-        int f3 = f1 + f2; f1 = f2; f2 = f3;
-        cout << "," << f3;
-    }
-}
-
-// Checks if the number is prime or not (true/false):
-bool CheckPrime(int n = GetInt())
-{
-    bool result = false;
-    for (int i = 2; i < n; i++)
-        if (n == i)
-        {
-            result = true;
-            break;
-        }
-    return result;
-}
-
-// ب.م.م:
-int BMM(int n1 = GetInt(), int n2 = GetInt())
-{
-    int BMM;
-    for (int i = n2; true; i--)
-        if (n1 % i == 0 && n2 % i == 0)
-        {
-            BMM = i;
-            break;
-        }
-    return BMM;
-}
-
-// Multiplication table:
-void MultiplicationTable(int n = GetInt())
-{
-    for (int j = 1; j <= n; j++)
-    {
-        for (int i = 1; i <= n; i++)
-            cout << i * j << ",";
-        cout << "\n";
-    }
-}
-
-//12. ++ + ...
-void Plus(int n = GetInt())
-{
-    for (int j = 1; j <= n; j++)
-    {
-        for (int i = 1; i <= j; i++)
-            cout << "+";
-        cout << "\n";
-    }
-}
-
 // Sorts an array of doubles:
 vector<double> Sort(vector<double> nums = GetDoubles())
 {
@@ -162,11 +76,71 @@ vector<double> Sort(vector<double> nums = GetDoubles())
     return arranged;
 }
 
-// If the number is even, *2 . otherwise /2 :
-double CheckEO(int n = GetInt())
+// Average:
+double Average(vector<double> nums = GetDoubles())
 {
-    double result = (n % 2 == 0) ? n * 2 : static_cast<double>(n) / 2;
+    double sum = 0;
+    for (int i = 0; i < nums.size(); i++)
+        sum = sum + nums[i];
+    return sum / nums.size();
+}
+
+// Factorial:
+int Factorial(int n = GetInts(1)[0])
+{
+    int f = 1;
+    for (n; n > 0; n--)
+        f *= n;
+    return f;
+}
+
+// Checks if the number is prime or not (true/false):
+bool CheckPrime(int n = GetInts(1)[0])
+{
+    bool result = false;
+    for (int i = 2; i < n; i++)
+        if (n == i)
+        {
+            result = true;
+            break;
+        }
     return result;
+}
+
+// ب.م.م:
+int BMM(vector<int> nums = GetInts(2))
+{
+    int BMM;
+    for (int i = nums[1]; true; i--)
+        if (nums[0] % i == 0 && nums[1] % i == 0)
+        {
+            BMM = i;
+            break;
+        }
+    return BMM;
+}
+
+// Multiplication table:
+void MultiplicationTable(int n = GetInts(1)[0])
+{
+    for (int j = 1; j <= n; j++)
+    {
+        for (int i = 1; i <= n; i++)
+            cout << i * j << ",";
+        cout << "\n";
+    }
+}
+
+// Fibonacci:
+void Fibonacci(int n = GetInts(1)[0])
+{
+    int f1 = 0, f2 = 1;
+    cout << f1 << "," << f2;
+    for (int i = 2; i < n; i++)
+    {
+        int f3 = f1 + f2; f1 = f2; f2 = f3;
+        cout << "," << f3;
+    }
 }
 
 // Reverse the string:
@@ -176,6 +150,39 @@ string ReverseStr(string s = GetString())
     for (int i = s.size() - 1; i >= 0; i--)
         r += s[i];
     return r;
+}
+
+// Outputs a list of prime numbers until n:
+void PrimeList(int n = GetInts(1)[0])
+{
+    for (int i = 2; i <= n; i++)
+    {
+        int j = i;
+        do
+        {
+            if (j == 2)
+                cout << i << ",";
+            j--;
+        } while (i % j != 0 && j > 1);
+    }
+}
+
+// If the number is even, *2 . otherwise /2 :
+double CheckEO(int n = GetInts(1)[0])
+{
+    double result = (n % 2 == 0) ? n * 2 : static_cast<double>(n) / 2;
+    return result;
+}
+
+//12. ++ + ...
+void Plus(int n = GetInts(1)[0])
+{
+    for (int j = 1; j <= n; j++)
+    {
+        for (int i = 1; i <= j; i++)
+            cout << "+";
+        cout << "\n";
+    }
 }
 
 // Gets the names and scores then shows the best and worst students:
@@ -197,7 +204,8 @@ void Scores()
         if (scores[i] > scores[iMax])
             iMax = i;
     }
-    cout << "The best student: " << names[iMax] << "\nThe worst: " << names[iMin];
+    cout << "\nThe best student: " << names[iMax] << " (" << scores[iMax] << ")\n";
+    cout << "The worst: "          << names[iMin] << " (" << scores[iMin] << ")\n";
 }
 
 int main()
@@ -206,17 +214,17 @@ int main()
     cout << "1. Find the minimum number\n";
     cout << "2. Find the maximum number\n";
     cout << "3. Sort numbers\n";
-    cout << "4. Calculate the average\n";
-    cout << "5. Calculate the factorial\n";
+    cout << "4. Average\n";
+    cout << "5. Factorial\n";
     cout << "6. Check if the number is prime or not\n";
-    cout << "7. Calculate the B.M.M of two numbers\n";
-    cout << "8. Show the multiplication table with the n length and width\n";
+    cout << "7. B.M.M of two numbers\n";
+    cout << "8. Multiplication table with the n length and width\n";
     cout << "9. n terms of the fibonacci sequence \n";
     cout << "10. Reverse a string\n";
-    cout << "11. Show a list of prime numbers until n\n";
+    cout << "11. List of prime numbers until n\n";
     cout << "12. If the number is even, *2 . otherwise /2\n";
     cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
-    cout << "14. Gets the name and scores and shows the best and the worst students\n";
+    cout << "14. Shows the best and the worst students\n";
 
     int option, options = 14;
     while (true)
