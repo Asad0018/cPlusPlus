@@ -229,7 +229,7 @@ int main()
     cout << "12. If the number is even, *2 . otherwise /2\n";
     cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
     cout << "14. Shows the best and the worst students\n";
-    cout << "15. Gets x and y, Shows the x^y :";
+    cout << "15. Gets x and y, Shows the x^y :\n";
 
     int option, options = 15;
     bool loop = true;
@@ -288,7 +288,7 @@ int main()
             Scores();
             break;
         case 15:
-            cout << Power();
+            cout << "x^y  = " << Power();
             break;
         default:
             cout << "invalid input!! Choose a numer from 1 to " << options << "\n";
