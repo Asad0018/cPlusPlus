@@ -88,10 +88,9 @@ double Average(vector<double> nums = GetDoubles())
 // Factorial:
 int Factorial(int n = GetInts(1)[0])
 {
-    int f = 1;
-    for (n; n > 0; n--)
-        f *= n;
-    return f;
+    if (n == 1)
+        return 1;
+    return n * Factorial(n - 1);
 }
 
 // Checks if the number is prime or not (true/false):
@@ -132,15 +131,11 @@ void MultiplicationTable(int n = GetInts(1)[0])
 }
 
 // Fibonacci:
-void Fibonacci(int n = GetInts(1)[0])
+int Fibonacci(int n = GetInts(1)[0])
 {
-    int f1 = 0, f2 = 1;
-    cout << f1 << "," << f2;
-    for (int i = 2; i < n; i++)
-    {
-        int f3 = f1 + f2; f1 = f2; f2 = f3;
-        cout << "," << f3;
-    }
+    if (n < 3)
+        return n - 1;
+    return Fibonacci(n - 1) + Fibonacci(n - 2);
 }
 
 // Reverse the string:
@@ -208,6 +203,15 @@ void Scores()
     cout << "The worst: "          << names[iMin] << " (" << scores[iMin] << ")\n";
 }
 
+// Gets x and y, Shows the x^y :
+int Power(vector<int> n = GetInts(2))
+{
+    int x = n[0], y = n[1];
+    if (y == 1)
+        return x;
+    return x * Power({x , y - 1});
+}
+
 int main()
 {
     cout << "I can do these things for you. Choose the number of your option:\n\n";
@@ -219,14 +223,15 @@ int main()
     cout << "6. Check if the number is prime or not\n";
     cout << "7. B.M.M of two numbers\n";
     cout << "8. Multiplication table with the n length and width\n";
-    cout << "9. n terms of the fibonacci sequence \n";
+    cout << "9. Shows the term n of Fibonacci\n";
     cout << "10. Reverse a string\n";
     cout << "11. List of prime numbers until n\n";
     cout << "12. If the number is even, *2 . otherwise /2\n";
     cout << "13. Show the shape below for n lines:\n+\n++\n+++ ...\n";
     cout << "14. Shows the best and the worst students\n";
+    cout << "15. Gets x and y, Shows the x^y :";
 
-    int option, options = 14;
+    int option, options = 15;
     bool loop = true;
     while (loop)
     {
@@ -265,7 +270,7 @@ int main()
             MultiplicationTable();
             break;
         case 9:
-            Fibonacci();
+            cout << Fibonacci();
             break;
         case 10:
             cout << "Reversed string: " << ReverseStr();
@@ -281,6 +286,9 @@ int main()
             break;
         case 14:
             Scores();
+            break;
+        case 15:
+            cout << Power();
             break;
         default:
             cout << "invalid input!! Choose a numer from 1 to " << options << "\n";
