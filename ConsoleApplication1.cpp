@@ -206,10 +206,9 @@ void Scores()
 // Gets x and y, Shows the x^y :
 int Power(vector<int> n = GetInts(2))
 {
-    int x = n[0], y = n[1];
-    if (y == 1)
+    if (y == n[1])
         return x;
-    return x * Power({x , y - 1});
+    return n[0] * Power({n[0] , n[1] - 1});
 }
 
 int main()
